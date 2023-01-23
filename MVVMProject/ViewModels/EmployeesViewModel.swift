@@ -10,7 +10,7 @@ import Foundation
 class EmployeesViewModel: NSObject {
     
     private var apiService: APIService!
-    private(set) var empData: Employees! {
+    private(set) var productsData: Products! {
         didSet {
             self.bindEmployeeViewModelToController()
         }
@@ -26,10 +26,9 @@ class EmployeesViewModel: NSObject {
     }
     
     func callFuncToGetEmpData() {
-        self.apiService.apiToGetEmployeeData { [weak self] empData in
+        self.apiService.apiToGetEmployeeData { [weak self] data in
             guard let self = self else { return }
-            print("Data: \(empData)")
-            self.empData = empData
+            self.productsData = data
         }
     }
 }
