@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var employeeTableView: UITableView!
     private var employeeViewModel: EmployeesViewModel!
 
-    private var dataSource: EmployeeTableViewDataSource<UITableViewCell, EmployeeData>!
+    private var dataSource: EmployeeTableViewDataSource<UITableViewCell, ProductsData>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +28,8 @@ class ViewController: UIViewController {
     }
     
     func updateDataSource() {
-        self.dataSource = EmployeeTableViewDataSource(cellIdentifier: "UITableViewCell", items: self.employeeViewModel.empData.data, configureCell: { (cell, evm) in
-            cell.textLabel?.text = evm.employeeName
+        self.dataSource = EmployeeTableViewDataSource(cellIdentifier: "myCell", items: self.employeeViewModel.productsData.products, configureCell: { (cell, product) in
+            cell.textLabel?.text = product.title
         })
         
         DispatchQueue.main.async {
